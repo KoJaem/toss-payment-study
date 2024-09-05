@@ -18,12 +18,12 @@ const PaymentButton: React.FC = () => {
     loadTossPayments(clientKey).then((tossPayments: TossPaymentsInstance) => {
       tossPayments
         .requestPayment("CARD", {
-          amount: 10000, // Replace with actual amount
+          amount: 5000, // Replace with actual amount
           orderId: `${new Date().getTime()}`, // Replace with actual order ID
-          orderName: "맥북 10000원", // Replace with actual product name
+          orderName: "맥북", // Replace with actual product name
           customerName: "KoJaem", // Replace with actual customer name
-          successUrl: `${window.location.origin}/payments/complete`,
-          failUrl: `${window.location.origin}/payments/fail`,
+          successUrl: `${window.location.origin}/api/payments`,
+          failUrl: `${window.location.origin}/api/payments/fail`,
         })
         .catch(error => {
           if (error.code === "USER_CANCEL") {
